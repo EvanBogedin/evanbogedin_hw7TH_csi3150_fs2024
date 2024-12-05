@@ -1,6 +1,6 @@
 import React from "react";
 
-function FormsTutorial() {
+function Form() {
   const [formData, setFormData] = React.useState({
     fullName: "",
     userName: "",
@@ -10,9 +10,11 @@ function FormsTutorial() {
   });
 
   function handleChange(e) {
-    const { value } = e.target;
+    //console.log(e.target.value);
+    const { name, value, type } = e.target;
     setFormData((prevFormData) => {
-      return { ...prevFormData, value };
+      //console.log(name);
+      return { ...prevFormData, [name]: value };
     });
   }
 
@@ -55,7 +57,7 @@ function FormsTutorial() {
         name="email"
         value={formData.email}
       />
-      <label htmlFor="addressInput"> Enter Your Address 😐: </label>
+      <label htmlFor="addressInput"> Enter Your Address: </label>
       <input
         className="textInput"
         id="addressInput"
@@ -83,4 +85,4 @@ function FormsTutorial() {
   );
 }
 
-export default FormsTutorial;
+export default Form;
